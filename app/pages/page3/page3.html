@@ -1,0 +1,55 @@
+<ion-navbar *navbar>
+	<ion-title>
+		Plan
+	</ion-title>
+</ion-navbar>
+
+<ion-content class="page3">
+	<div class="card-background-page">
+		<ion-card>
+			<img src="img/got.jpg" />
+			<div class="card-title">Map</div>
+			<div class="card-subtitle">Marker and Waypoints</div>
+		</ion-card>
+	</div>
+
+	<ion-card>
+		<ion-card-header>
+			<b>จุดแวะ</b>
+		</ion-card-header>
+
+		<ion-list class="chat-sliding-demo">
+
+			<ion-item-sliding *ngFor="let item of items">
+				<ion-item>
+					<ion-avatar item-left>
+						<img src="img/sloth.jpg">
+					</ion-avatar>
+					<h2>{{item.name}}</h2>
+					<p>{{item.desc}}</p>
+					<ion-note item-right (click)="doPrompt(item)">
+						{{item.time}} hr.
+					</ion-note>
+				</ion-item>
+				<ion-item-options>
+		<button secondary >
+          <ion-icon name="menu"></ion-icon>
+          More
+        </button>
+		<button danger (click)="deletePlace(item)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+				</ion-item-options>
+			</ion-item-sliding>
+
+		</ion-list>
+
+
+	</ion-card>
+
+
+
+
+
+</ion-content>

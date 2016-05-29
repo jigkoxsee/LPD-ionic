@@ -1,0 +1,56 @@
+.page3 {
+
+}
+
+.card-background-page {
+
+  ion-card {
+    position: relative;
+    text-align: center;
+  }
+
+  .card-title {
+    position: absolute;
+    top: 36%;
+    font-size: 2.0em;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .card-subtitle {
+    font-size: 1.0em;
+    position: absolute;
+    top: 52%;
+    width: 100%;
+    color: #fff;
+  }
+
+}
+
+.chat-sliding-demo ion-note {
+    font-size: 13px;
+    margin-top: -8px;
+  }
+
+  .chat-sliding-demo ion-item-options .button-inner {
+    font-size: 14px;
+    flex-direction: column;
+  }
+
+  .chat-sliding-demo ion-item-options ion-icon {
+    padding-right: 0;
+    padding-bottom: 0.3em;
+  }
+
+  .login-sliding-demo .ion-logo-twitter {
+    color: #53ACEB;
+  }
+
+  .login-sliding-demo .ion-logo-github {
+    color: #000000;
+  }
+
+  .login-sliding-demo .ion-logo-instagram {
+    color: #235D8D;
+  }
