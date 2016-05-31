@@ -78,6 +78,14 @@
         margin: 2px;
       }
 
+      .trip-btn {
+        margin-top: 10px; 
+        border: 0;
+        background-color: #2ecc71;
+        color: white;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      }
+
     </style>
   </head>
   <body>
@@ -99,36 +107,43 @@
 
           <input type="radio" name="type" id="changemode-driving">
           <label for="changemode-driving">Driving</label>
-        </div> 
+        </div> <br />
+        <button class="trip-btn">เริ่มเดินทาง</button>
       </div>   
       <br/>
       Suggesting places :
 
-      <div class="card">
+      <div class="card" id="card1" style="display: none;">
         <div>
           <img class="suggest-place-image" src="./img/place1.png" />
         </div>
         <div class="suggest-place-detail">
           เขื่อนรัชชปภา <br />
-           <button id="place1">เดินทาง</button>
+          <small>30 นาที จาก B </small> <br />
+           <button class="trip-btn" id="place1">เดินทาง</button>
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" id="card2" style="display: none;">
         <div>
           <img class="suggest-place-image" src="./img/place2.png" />
         </div>
         <div class="suggest-place-detail">
           น้ำตกแม่ยาย <br />
-          <button id="place2" onclick="addLocation()">เดินทาง</button>
+          <small>28 นาที จาก B </small> <br />
+          <button class="trip-btn" id="place2" onclick="addLocation()">เดินทาง</button>
         </div>
       </div> 
 
       <script>
+      
+      var GoogleMaps = GoogleMaps || (function(){
 
-      function initMap() {
-        var origin_place_id = null;
-        var destination_place_id = null;
+      var waypts = [];
+      var origin_place_id = null;
+      var destination_place_id = null;
+
+      mapFunc = function initMap() {
         var travel_mode = google.maps.TravelMode.WALKING;
         var map = new google.maps.Map(document.getElementById('map'), {
           mapTypeControl: false,
@@ -142,10 +157,6 @@
         var origin_input = document.getElementById('origin-input');
         var destination_input = document.getElementById('destination-input');
         var modes = document.getElementById('mode-selector');
-
-        var waypts = [];
-
-        console.log(waypts);
 
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(modes);
 
@@ -166,6 +177,24 @@
         setupClickListener('changemode-walking', google.maps.TravelMode.WALKING);
         setupClickListener('changemode-transit', google.maps.TravelMode.TRANSIT);
         setupClickListener('changemode-driving', google.maps.TravelMode.DRIVING);
+
+        function refreshMapListener(){
+          var button = document.getElementById('place1');
+          button.addEventListener('click',function() {
+              addLocation(8.9724778, 98.803516);
+              var card1 = document.getElementById('card1');
+              card1.remove();
+          });
+          var button2 = document.getElementById('place2');
+          button2.addEventListener('click',function() {
+              addLocation(8.883606, 98.499548);
+              var card2 = document.getElementById('card2');
+              card2.remove();
+          });
+        }
+
+
+        refreshMapListener();
 
         function expandViewportToFitPlace(map, place) {
           if (place.geometry.viewport) {
@@ -200,17 +229,11 @@
           destination_place_id = place.place_id;
           route(origin_place_id, destination_place_id, travel_mode,
                 directionsService, directionsDisplay);
-        });
 
-        function addLocation(location_lat, location_long) {
-          waypts.push([{ 
-            // location: new google.maps.LatLng(8.972658, 98.805683),
-            location: new google.maps.LatLng(location_lat, location_long),
-            stopover: true
-            }]);
-            directionsDisplay.setMap(map);
-            // google.maps.event.trigger(map, 'resize');
-        }
+          // add new map element
+          document.getElementById('card1').style.display = 'block';
+          document.getElementById('card2').style.display = 'block';
+        });
 
         function route(origin_place_id, destination_place_id, travel_mode, directionsService, directionsDisplay) {
           if (!origin_place_id || !destination_place_id) {
@@ -219,7 +242,29 @@
           directionsService.route({
             origin: {'placeId': origin_place_id},
             destination: {'placeId': destination_place_id},
-            waypoints: waypts, 
+            waypoints: waypts,
+            optimizeWaypoints: true,
+            travelMode: travel_mode
+          }, function(response, status) {
+            if (status === google.maps.DirectionsStatus.OK) {
+              directionsDisplay.setDirections(response);
+            } else {
+              window.alert('Directions request failed due to ' + status);
+            }
+          });
+        }
+
+        function addLocation(location_lat, location_long) {
+          waypts.push({ 
+          location: new google.maps.LatLng(location_lat, location_long),
+          stopover: true
+          });
+          console.log("pin at  "+location_lat+" "+location_long);
+          // redraw direction
+          directionsService.route({
+            origin: {'placeId': origin_place_id},
+            destination: {'placeId': destination_place_id},
+            waypoints: waypts,
             optimizeWaypoints: true,
             travelMode: travel_mode
           }, function(response, status) {
@@ -231,8 +276,14 @@
           });
         }
       }
+
+      return {
+        initMap: mapFunc
+      };
+    }());
+
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfZzzVpSnxwj1WctlXfbL2odiQjCS8CGI&libraries=places&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfZzzVpSnxwj1WctlXfbL2odiQjCS8CGI&libraries=places&callback=GoogleMaps.initMap"
         async defer></script>
   </body>
 </html>
