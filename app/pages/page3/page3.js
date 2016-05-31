@@ -20,9 +20,12 @@ static get parameters() {
       ];
     }else{
       this.items = [
-        { name: "Name1", desc: "desc1", time: "time1" },
-        { name: "Name2", desc: "desc2", time: "time2" },
-        { name: "Name3", desc: "desc3", time: "time3" }
+        { name: "เขื่อนรัชประภา", desc: "", time: "24" },
+        { name: "น้ำตกตายาย", desc: "", time: "1" },
+        { name: "อนุสรณ์ซึนามิ", desc: "", time: "1" },
+        { name: "น้ำพุร้อนบ่อดาน", desc: "", time: "1" },
+        { name: "อุทยานสิรินาถ", desc: "", time: "2" },
+        { name: "เดรี่ฮัทฟาร์ม", desc: "", time: "2" },
       ];
     }
   }

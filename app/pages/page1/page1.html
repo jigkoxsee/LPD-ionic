@@ -1,92 +1,46 @@
 <ion-navbar *navbar>
-  <ion-title>ลองแพลนดู</ion-title>
+  <ion-title>ทริปของฉัน</ion-title>
 </ion-navbar>
 
 <ion-content padding class="page1">
 
-  <button fab fab-right fab-top>
-    <ion-icon name="pin"></ion-icon>
-  </button>
-
   <ion-card>
-    <img src="img/gopher.jpg" (click)="cardClick('img')">
-    <ion-item>
-      <ion-icon item-left large></ion-icon>
-      <h2>Institute of Fine Cocktails</h2>
-      <p>14 S. Hop Avenue, Madison, WI 53703</p>
-    </ion-item>
-    <ion-item>
-      <ion-icon name="wine" item-left large></ion-icon>
-      <h2>Institute of Fine Cocktails</h2>
-      <p>14 S. Hop Avenue, Madison, WI 53703</p>
-    </ion-item>
-    <ion-item>
-      <ion-icon name="wine" item-left large></ion-icon>
-      <h2>Institute of Fine Cocktails</h2>
-      <p>14 S. Hop Avenue, Madison, WI 53703</p>
-    </ion-item>
-    <ion-item>
-      <span item-left>18 min</span>
-      <span item-left>(2.6 mi)</span>
-      <button primary clear item-right>
-      <ion-icon name="navigate"></ion-icon>
-      Start
-    </button>
-    </ion-item>
-    <ion-item>
-      <button primary clear item-left>
-      <ion-icon name="thumbs-up"></ion-icon>
-      <div>12 Likes</div>
-    </button>
-      <button primary clear item-left>
-      <ion-icon name="text"></ion-icon>
-      <div>4 Comments</div>
-    </button>
-      <ion-note item-right>
-        11h ago
-      </ion-note>
-    </ion-item>
+    <ion-card-header>
+      ล่องใต้
+    </ion-card-header>
+    <ion-list>
+      <ion-item>
+        <ion-icon name="images" item-left large></ion-icon>
+        <h2>วัดพระแก้ว</h2>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="images" item-left large></ion-icon>
+        <h2>วัดอรุณ</h2>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="images" item-left large></ion-icon>
+        <h2>วัดเบญจมบพิตร</h2>
+      </ion-item>
+    </ion-list>
+
   </ion-card>
 
 
   <ion-card>
-    <img src="img/gopher.jpg" (click)="cardClick('img')">
-    <ion-item>
-      <ion-icon item-left large></ion-icon>
-      <h2>Institute of Fine Cocktails</h2>
-      <p>14 S. Hop Avenue, Madison, WI 53703</p>
-    </ion-item>
-    <ion-item>
-      <ion-icon name="wine" item-left large></ion-icon>
-      <h2>Institute of Fine Cocktails</h2>
-      <p>14 S. Hop Avenue, Madison, WI 53703</p>
-    </ion-item>
-    <ion-item>
-      <ion-icon name="wine" item-left large></ion-icon>
-      <h2>Institute of Fine Cocktails</h2>
-      <p>14 S. Hop Avenue, Madison, WI 53703</p>
-    </ion-item>
-    <ion-item>
-      <span item-left>18 min</span>
-      <span item-left>(2.6 mi)</span>
-      <button primary clear item-right>
-      <ion-icon name="navigate"></ion-icon>
-      Start
-    </button>
-    </ion-item>
-    <ion-item>
-      <button primary clear item-left>
-      <ion-icon name="thumbs-up"></ion-icon>
-      <div>12 Likes</div>
-    </button>
-      <button primary clear item-left>
-      <ion-icon name="text"></ion-icon>
-      <div>4 Comments</div>
-    </button>
-      <ion-note item-right>
-        11h ago
-      </ion-note>
-    </ion-item>
+    <ion-card-header>
+      เที่ยวเหนือ
+    </ion-card-header>
+    <ion-list>
+      <ion-item>
+        <ion-icon name="bus" item-left large></ion-icon>
+        <h2>เอกมัย</h2>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="images" item-left large></ion-icon>
+        <h2>ดอยสุเทพ</h2>
+      </ion-item>
+    </ion-list>
+
   </ion-card>
 
 </ion-content>

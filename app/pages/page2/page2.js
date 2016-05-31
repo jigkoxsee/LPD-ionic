@@ -51,6 +51,10 @@ export class Page2 {
       return false;
     });
   }
+  
+  cardClick() {
+    this.nav.push(Page3);
+  }
 
   
 
