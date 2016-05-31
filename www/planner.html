@@ -9,7 +9,7 @@
         height: 100%;
         margin: 0;
         padding: 0;
-        background-color: #e2e1e0;
+        background-colorlor: #e2e1e0;
       }
       #map {
         height: 70%;
@@ -109,6 +109,7 @@
           <label for="changemode-driving">Driving</label>
         </div> <br />
         <button class="trip-btn">เริ่มเดินทาง</button>
+
       </div>   
       <br/>
       Suggesting places :
@@ -125,6 +126,7 @@
       </div>
 
       <div class="card" id="card2" style="display: none;">
+
         <div>
           <img class="suggest-place-image" src="./img/place2.png" />
         </div>
@@ -144,6 +146,7 @@
       var destination_place_id = null;
 
       mapFunc = function initMap() {
+
         var travel_mode = google.maps.TravelMode.WALKING;
         var map = new google.maps.Map(document.getElementById('map'), {
           mapTypeControl: false,

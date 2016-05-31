@@ -1,21 +1,22 @@
 <ion-navbar *navbar>
 	<ion-title>
-		Plan
+		ทริป
 	</ion-title>
 </ion-navbar>
 
 <ion-content class="page3">
 	<div class="card-background-page">
 		<ion-card>
-			<img src="img/got.jpg" />
-			<div class="card-title">Map</div>
-			<div class="card-subtitle">Marker and Waypoints</div>
+			<img src="img/map.jpg" />
+
+			<!--<div class="card-title">Map</div>
+			<div class="card-subtitle">Marker and Waypoints</div>-->
 		</ion-card>
 	</div>
 
 	<ion-card>
 		<ion-card-header>
-			<b>จุดแวะ</b>
+			<b>สถานที่ท่องเที่ยว</b>
 		</ion-card-header>
 
 		<ion-list class="chat-sliding-demo">
@@ -23,12 +24,12 @@
 			<ion-item-sliding *ngFor="let item of items">
 				<ion-item>
 					<ion-avatar item-left>
-						<img src="img/sloth.jpg">
+						<img src="img/place1.png">
 					</ion-avatar>
 					<h2>{{item.name}}</h2>
 					<p>{{item.desc}}</p>
 					<ion-note item-right (click)="doPrompt(item)">
-						{{item.time}} hr.
+						{{item.time}} ชม.
 					</ion-note>
 				</ion-item>
 				<ion-item-options>

@@ -1,61 +1,148 @@
 <ion-navbar *navbar>
   <ion-title>
-    Search
+    ลองแพลนดู
   </ion-title>
 </ion-navbar>
 
 <ion-toolbar>
-  <ion-searchbar [(ngModel)]="searchQuery" (input)="getItems($event)" (cancel)="searchBoxClear($event)" (clear)="searchBoxClear($event)"></ion-searchbar>
+  <ion-searchbar [(ngModel)]="searchQuery" (input)="getItems($event)" (cancel)="searchBoxClear()" (clear)="searchBoxClear()"></ion-searchbar>
 </ion-toolbar>
 <ion-content class="page2">
+
+  <button fab fab-right fab-top>
+    <ion-icon name="pin"></ion-icon>
+  </button>
+
   <ion-list>
-    <ion-item *ngFor="let item of items">
+    <ion-item *ngFor="let item of items" (click)="searchClick(item)">
       {{ item }}
     </ion-item>
   </ion-list>
 
-  <ion-card>
+  <ion-card (click)="cardClick()">
+    <img src="img/place1.png">
+    <ion-list>
+      <ion-item>
+        <ion-icon name="water" item-left large></ion-icon>
+        <h2>เขื่อนรัชประภา</h2>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="leaf" item-left large></ion-icon>
+        <h2>น้ำตกแม่ยาย</h2>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="images" item-left large></ion-icon>
+        <h2>อนุสรณ์ซึนามิ</h2>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="water" item-left large></ion-icon>
+        <h2>น้ำพุร้อนบ่อดาน</h2>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="bonfire" item-left large></ion-icon>
+        <h2>อุทยานสิรินาถ</h2>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="paw" item-left large></ion-icon>
+        <h2>เดรี่ฮัทฟาร์ม</h2>
+      </ion-item>
+    </ion-list>
     <ion-item>
-      <ion-avatar item-left>
-        <img src="img/gopher.jpg">
-      </ion-avatar>
-      <h2>Marty McFly</h2>
-      <p>November 5, 1955</p>
+      <span item-left>4 วัน</span>
+      <span item-left>(1080 กม.)</span>
+      <button primary clear item-right>
+      <ion-icon name="navigate"></ion-icon>
+      Start
+    </button>
     </ion-item>
-    <ion-card-content>
-      <a href="planner.html">LINK</a>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card>
-    <ion-item>
-      <ion-avatar item-left>
-        <img src="img/gopher.jpg">
-      </ion-avatar>
-      <h2>Marty McFly</h2>
-      <p>November 5, 1955</p>
-    </ion-item>
-
-    <ion-card-content>
-      <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?!
-        Whoa. This is heavy.</p>
-    </ion-card-content>
-
     <ion-item>
       <button primary clear item-left>
       <ion-icon name="thumbs-up"></ion-icon>
-      <div>12 Likes</div>
+      <div>52 Likes</div>
     </button>
       <button primary clear item-left>
       <ion-icon name="text"></ion-icon>
-      <div>4 Comments</div>
+      <div>17 Comments</div>
     </button>
       <ion-note item-right>
-        11h ago
+        18 ชม. ที่แล้ว
       </ion-note>
     </ion-item>
-
   </ion-card>
 
+  <ion-card>
+    <img src="img/pra.jpg">
+    <ion-list>
+      <ion-item>
+        <ion-icon name="images" item-left large></ion-icon>
+        <h2>วัดพระแก้ว</h2>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="images" item-left large></ion-icon>
+        <h2>วัดอรุณ</h2>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="images" item-left large></ion-icon>
+        <h2>วัดเบญจมบพิตร</h2>
+      </ion-item>
+    </ion-list>
+    <ion-item>
+      <span item-left>4 ชม.</span>
+      <span item-left>(16 กม.)</span>
+      <button primary clear item-right>
+      <ion-icon name="navigate"></ion-icon>
+      Start
+    </button>
+    </ion-item>
+    <ion-item>
+      <button primary clear item-left>
+        <ion-icon name="thumbs-up"></ion-icon>
+        <div>12 Likes</div>
+      </button>
+      <button primary clear item-left>
+        <ion-icon name="text"></ion-icon>
+        <div>4 Comments</div>
+      </button>
+      <ion-note item-right>
+        11 ชม ที่แล้ว
+      </ion-note>
+    </ion-item>
+  </ion-card>
+
+
+  <ion-card>
+    <img src="img/doi.jpg">
+    <ion-list>
+    <ion-item>
+      <ion-icon name="bus" item-left large></ion-icon>
+      <h2>เอกมัย</h2>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="images" item-left large></ion-icon>
+      <h2>ดอยสุเทพ</h2>
+    </ion-item>
+    </ion-list>
+    <ion-item>
+      <span item-left>10 ชม.</span>
+      <span item-left>(958 กม.)</span>
+      <button primary clear item-right>
+      <ion-icon name="navigate"></ion-icon>
+      Start
+    </button>
+    </ion-item>
+    <ion-item>
+      <button primary clear item-left>
+      <ion-icon name="thumbs-up"></ion-icon>
+      <div>22 Likes</div>
+    </button>
+      <button primary clear item-left>
+      <ion-icon name="text"></ion-icon>
+      <div>7 Comments</div>
+    </button>
+      <ion-note item-right>
+        18 ชม. ที่แล้ว
+      </ion-note>
+    </ion-item>
+  </ion-card>
 
 </ion-content>

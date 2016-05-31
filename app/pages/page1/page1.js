@@ -16,7 +16,6 @@ export class Page1 {
   }
 
   cardClick(e) {
-    console.log("Eiei +" + e);
     this.nav.push(Page3);
   }
 }
