@@ -12,7 +12,7 @@
         background-color: #e2e1e0;
       }
       #map {
-        height: 50%;
+        height: 70%;
       }
       .controls {
         margin-top: 10px;
@@ -65,15 +65,28 @@
         transition: all 0.3s cubic-bezier(.25,.8,.25,1);
       }
 
+      .suggest-place-detail {
+        float: left;
+        position: relative;
+        text-align: center;
+      }
+
+      .suggest-place-image {
+        float: left;
+        position: relative;
+        width: 40%;
+        margin: 2px;
+      }
+
     </style>
   </head>
   <body>
-
-      <div id="map"></div>
-        Start :
+      <div class="card" style="height: 400px;text-align: center;">
+        <div id="map"></div>
+          Start :
         <input id="origin-input" class="controls" type="text"
             placeholder="Enter an origin location"> <br/>
-        End :
+          End :
         <input id="destination-input" class="controls" type="text"
             placeholder="Enter a destination location">
 
@@ -86,20 +99,32 @@
 
           <input type="radio" name="type" id="changemode-driving">
           <label for="changemode-driving">Driving</label>
-        </div>    
-
-        <br/><br />
-        Suggesting places :
-
-        <div class = "card card-1">
-          test card
-        </div>
-
-        <div class = "card">
-          test card
         </div> 
+      </div>   
+      <br/>
+      Suggesting places :
 
-    <script>
+      <div class="card">
+        <div>
+          <img class="suggest-place-image" src="./img/place1.png" />
+        </div>
+        <div class="suggest-place-detail">
+          เขื่อนรัชชปภา <br />
+           <button id="place1">เดินทาง</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <img class="suggest-place-image" src="./img/place2.png" />
+        </div>
+        <div class="suggest-place-detail">
+          น้ำตกแม่ยาย <br />
+          <button id="place2" onclick="addLocation()">เดินทาง</button>
+        </div>
+      </div> 
+
+      <script>
 
       function initMap() {
         var origin_place_id = null;
@@ -118,6 +143,9 @@
         var destination_input = document.getElementById('destination-input');
         var modes = document.getElementById('mode-selector');
 
+        var waypts = [];
+
+        console.log(waypts);
 
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(modes);
 
@@ -174,6 +202,16 @@
                 directionsService, directionsDisplay);
         });
 
+        function addLocation(location_lat, location_long) {
+          waypts.push([{ 
+            // location: new google.maps.LatLng(8.972658, 98.805683),
+            location: new google.maps.LatLng(location_lat, location_long),
+            stopover: true
+            }]);
+            directionsDisplay.setMap(map);
+            // google.maps.event.trigger(map, 'resize');
+        }
+
         function route(origin_place_id, destination_place_id, travel_mode,
                        directionsService, directionsDisplay) {
           if (!origin_place_id || !destination_place_id) {
@@ -182,6 +220,8 @@
           directionsService.route({
             origin: {'placeId': origin_place_id},
             destination: {'placeId': destination_place_id},
+            waypoints: waypts, 
+            optimizeWaypoints: true,
             travelMode: travel_mode
           }, function(response, status) {
             if (status === google.maps.DirectionsStatus.OK) {
