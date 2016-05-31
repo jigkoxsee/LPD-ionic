@@ -5,11 +5,11 @@
 </ion-navbar>
 
 <ion-toolbar>
-  <ion-searchbar [(ngModel)]="searchQuery" (input)="getItems($event)" (cancel)="searchBoxClear($event)" (clear)="searchBoxClear($event)"></ion-searchbar>
+  <ion-searchbar [(ngModel)]="searchQuery" (input)="getItems($event)" (cancel)="searchBoxClear()" (clear)="searchBoxClear()"></ion-searchbar>
 </ion-toolbar>
 <ion-content class="page2">
   <ion-list>
-    <ion-item *ngFor="let item of items">
+    <ion-item *ngFor="let item of items" (click)="searchClick(item)">
       {{ item }}
     </ion-item>
   </ion-list>

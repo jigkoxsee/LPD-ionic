@@ -1,4 +1,4 @@
-import {Page,Alert,NavController} from 'ionic-angular';
+import {Page,Alert,NavController,NavParams} from 'ionic-angular';
 
 
 @Page({
@@ -7,15 +7,24 @@ import {Page,Alert,NavController} from 'ionic-angular';
 
 export class Page3 {
 static get parameters() {
-    return [[NavController]];
+    return [[NavController],[NavParams]];
   }
-  constructor(nav) {
+  constructor(nav,navParams) {
     this.nav=nav;
-    this.items = [
-      { name: "Name1", desc: "desc1", time: "time1" },
-      { name: "Name2", desc: "desc2", time: "time2" },
-      { name: "Name3", desc: "desc3", time: "time3" }
-    ];
+    this.navParams=navParams;
+    let place = this.navParams.get('item');
+    console.log("Place : "+place);
+    if (place){
+      this.items = [
+        { name: place, desc: "รายละเอียดสถานที่ท่องเที่ยว", time: "1" }
+      ];
+    }else{
+      this.items = [
+        { name: "Name1", desc: "desc1", time: "time1" },
+        { name: "Name2", desc: "desc2", time: "time2" },
+        { name: "Name3", desc: "desc3", time: "time3" }
+      ];
+    }
   }
 
   deletePlace(item) {

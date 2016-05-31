@@ -1,29 +1,37 @@
-import {Page, Searchbar} from 'ionic-angular';
-
+import {Page, Searchbar,NavController,NavParams} from 'ionic-angular';
+import {Page3} from '../page3/page3';
 
 @Page({
   templateUrl: 'build/pages/page2/page2.html'
 })
 export class Page2 {
-  constructor() {
+  static get parameters() {
+    return [[NavController]];
+  }
+  constructor(nav) {
+    this.nav=nav;
     this.searchQuery = '';
   }
 
   initializeItems() {
     this.items = [
-      'Angular 1.x',
-      'Angular 2',
-      'ReactJS',
-      'EmberJS',
-      'Meteor',
-      'Typescript',
-      'Dart',
-      'CoffeeScript'
+      'Ratchaprapha dam',
+      'Mae yai water fall',
+      'Tsunami monument',
+      'Dairy hut farm',
+      'Sirinat',
+      'Laem prom tep',
+      'Laem hin',
+      'Pa tong beach'
     ];
   }
 
-  searchBoxClear(e) {
+  searchBoxClear() {
     this.items = [];
+  }
+  
+  searchClick(item){
+    this.nav.push(Page3,{ item: item });
   }
 
   getItems(searchbar) {
