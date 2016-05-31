@@ -20,6 +20,9 @@ tmp/
 temp/
 www/build/
 $RECYCLE.BIN/
+platforms/android/
+mapplanner
+
 
 .DS_Store
 Thumbs.db

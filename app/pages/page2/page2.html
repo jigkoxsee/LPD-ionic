@@ -7,7 +7,6 @@
 <ion-toolbar>
   <ion-searchbar [(ngModel)]="searchQuery" (input)="getItems($event)" (cancel)="searchBoxClear($event)" (clear)="searchBoxClear($event)"></ion-searchbar>
 </ion-toolbar>
-
 <ion-content class="page2">
   <ion-list>
     <ion-item *ngFor="let item of items">
@@ -23,8 +22,19 @@
       <h2>Marty McFly</h2>
       <p>November 5, 1955</p>
     </ion-item>
+    <ion-card-content>
+      <a href="planner.html">LINK</a>
+    </ion-card-content>
+  </ion-card>
 
-    <img src="img/sloth.jpg">
+  <ion-card>
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="img/gopher.jpg">
+      </ion-avatar>
+      <h2>Marty McFly</h2>
+      <p>November 5, 1955</p>
+    </ion-item>
 
     <ion-card-content>
       <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?!
